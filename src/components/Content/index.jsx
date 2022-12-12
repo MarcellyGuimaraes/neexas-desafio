@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import List from '../List'
 
 const Content = () => {
   const [post, setPost] = useState(null)
@@ -25,8 +24,6 @@ const Content = () => {
     sum += amount[i]
   }
 
-  console.log(sum)
-
   return (
     <div>
       <div>
@@ -40,7 +37,11 @@ const Content = () => {
       </div>
       <div className="m-3">
         <p>Clientes Cadastrados</p>
-        <List post={post} />
+        <ul>
+          {post.map((item) => (
+            <li key={item.name}>{item.name}</li>
+          ))}
+        </ul>
       </div>
     </div>
   )

@@ -5,21 +5,21 @@ import logo from './assets/img/Logo Nexaas.png'
 
 function App() {
   return (
-    <div className="container h-screen">
+    <div className="h-screen w-screen">
       <div className="grid grid-cols-12 grid-rows-6">
-        <div className="col-span-2 h-14 row-span-1 lg:col-span-1">
+        <div className="place-self-center col-span-2 h-14 row-span-1">
           <img src={logo} />
         </div>
 
-        <div className="border-t-2 col-span-2 row-span-5 row-start-2 lg:col-span-1">
+        <div className="border-t-2 col-span-2 row-span-5 row-start-2">
           <Navbar />
         </div>
 
-        <div className="border-l-2 col-span-8 row-span-1 lg:col-span-9">
+        <div className="border-l-2 col-span-10 row-span-1">
           <Header />
         </div>
 
-        <div className="border-t-2 border-l-2 bg-gray-200 col-span-8 lg:col-span-9 row-span-5">
+        <div className="border-t-2 w-full border-l-2 bg-gray-200 col-span-10 row-span-5">
           <Content />
         </div>
       </div>
