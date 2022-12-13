@@ -13,8 +13,9 @@ const Content = () => {
 
   const totalClientes = post.length
 
-  const clientesInad = post.filter((post) => post.status == 'overdue').length
-  const clientesAdim = post.filter((post) => post.status == 'paying').length
+  const clientesInad = post.filter((post) => post.status == 'inadimplente')
+    .length
+  const clientesAdim = post.filter((post) => post.status == 'adimplente').length
 
   // Total Arrecadado
   const amount = post.map((item) => item.subscription_amount)
@@ -24,22 +25,51 @@ const Content = () => {
     sum += amount[i]
   }
 
+  // CONSTANTES DE CLASSES
+  const cardText = 'w-fit h-fit w-2/12 bg-white p-5 m-3'
+  const textNumber = 'font-bold text-blue-600 text-xl'
+
   return (
-    <div>
-      <div>
-        <p>Visão Geral</p>
+    <div className="h-fit bg-slate-200 border-t-2 border-l-2 col-span-10 row-span-5  pt-7 pl-3">
+      <div className="mb-10">
+        <p className="border-l-4 border-blue-600 pl-2 font-semibold">
+          Visão Geral
+        </p>
         <div className="flex">
-          <div className="w-40 bg-white m-3">{totalClientes}</div>
-          <div className="w-40 bg-white m-3">{clientesInad}</div>
-          <div className="w-40 bg-white m-3">{clientesAdim}</div>
-          <div className="w-40 bg-white m-3">{sum.toFixed(2)}</div>
+          <div className={cardText}>
+            <p>Total de clientes</p>
+            <p className={textNumber}>{totalClientes}</p>
+          </div>
+          <div className={cardText}>
+            <p>Clientes inadimplentes</p>{' '}
+            <p className={textNumber}>{clientesInad}</p>
+          </div>
+          <div className={cardText}>
+            <p>Clientes adimplentes</p>{' '}
+            <p className={textNumber}>{clientesAdim}</p>
+          </div>
+          <div className={cardText}>
+            <p>Total arrecadado</p>{' '}
+            <p className={textNumber}>{sum.toFixed(2)}</p>
+          </div>
         </div>
       </div>
       <div className="m-3">
-        <p>Clientes Cadastrados</p>
+        <p className="border-l-4 border-blue-600 pl-2 font-semibold">
+          Clientes Cadastrados
+        </p>
         <ul>
           {post.map((item) => (
-            <li key={item.name}>{item.name}</li>
+            <li
+              className="bg-white p-5 m-2 flex justify-around"
+              key={item.name}
+            >
+              <img class="rounded-full" src={item.profile_image} alt="" />
+              <span>{item.name}</span>
+              <span>{item.email}</span>
+              <span>{item.phone}</span>
+              <span>{item.status}</span>
+            </li>
           ))}
         </ul>
       </div>

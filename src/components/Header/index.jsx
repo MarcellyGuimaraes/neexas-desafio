@@ -4,7 +4,7 @@ import avatar from '../../assets/img/avatar-admin.png'
 
 const Header = () => {
   return (
-    <div className="p-6 flex justify-between">
+    <div className="border-l-2 col-span-10 row-span-1 p-6 flex justify-between">
       <input
         type="text"
         id="simple-search"

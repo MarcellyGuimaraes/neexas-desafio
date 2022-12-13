@@ -4,57 +4,64 @@
         "name": "Márcio Braga",
         "email": "marcio.braga@minhaempresa.com.br",
         "phone": "(21) 98987-7650",
-        "status": "paying",
+        "status": "adimplente",
         "subscription_amount": 250.99,
-        "profile_url": null
+        "profile_url": null,
+        "profile_image": "../src/assets/img/users/MarcioBraga.png"
       },
       {
         "name": "Felipe Cardoso",
         "email": "felipe.cardoso@minhaempresa.com.br",
         "phone": "(21) 98987-7651",
-        "status": "paying",
+        "status": "adimplente",
         "subscription_amount": 250.99,
-        "profile_url": null
+        "profile_url": null,
+        "profile_image": "../src/assets/img/users/FelipeCardoso.png"
       },
       {
         "name": "Maria Silva",
         "email": "maria.silva@minhaempresa.com.br",
         "phone": "(21) 98987-7652",
-        "status": "overdue",
+        "status": "inadimplente",
         "subscription_amount": 750.99,
-        "profile_url": null
+        "profile_url": null,
+        "profile_image": "../src/assets/img/users/MariaSilva.png"
       },
       {
         "name": "Eduardo Lopes",
         "email": "eduardo.lopes@minhaempresa.com.br",
         "phone": "(21) 98987-7653",
-        "status": "overdue",
+        "status": "inadimplente",
         "subscription_amount": 250.99,
-        "profile_url": null
+        "profile_url": null,
+        "profile_image": "../src/assets/img/users/EduardoLopes.png"
       },
       {
         "name": "Nathalia Amaral",
         "email": "nathalia.amaral@minhaempresa.com.br",
         "phone": "(21) 98987-7654",
-        "status": "paying",
+        "status": "adimplente",
         "subscription_amount": 150.99,
-        "profile_url": null
+        "profile_url": null,
+        "profile_image": "../src/assets/img/users/NathaliaAmaral.png"
       },
       {
         "name": "Maria Fernanda",
         "email": "maria.fernanda@minhaempresa.com.br",
         "phone": "(21) 98987-7655",
-        "status": "overdue",
+        "status": "inadimplente",
         "subscription_amount": 250.99,
-        "profile_url": null
+        "profile_url": null,
+        "profile_image": "../src/assets/img/users/MariaFernanda.png"
       },
       {
         "name": "Roberto Duarte",
         "email": "roberto.duarte@minhaempresa.com.br",
         "phone": "(21) 98987-7656",
-        "status": "overdue",
+        "status": "inadimplente",
         "subscription_amount": 950.99,
-        "profile_url": null
+        "profile_url": null,
+        "profile_image": "../src/assets/img/users/RobertoDuarte.png"
       }
     ]
   }
