@@ -21,11 +21,9 @@ const Content = () => {
   // CONSTANTES DE CLASSES
   const cardText = 'h-fit w-2/12 bg-white p-5 m-3'
   const textNumber = 'font-bold text-blue-600 text-xl'
-  const tableContent = 'px-5 py-5 border-b border-gray-200 bg-white text-sm'
-  const tableText = 'text-gray-900 whitespace-no-wrap'
 
   return (
-    <div className="h-fit bg-slate-200 border-t-2 border-l-2 col-span-10 row-span-5  py-7 px-3">
+    <div>
       <div className="mb-10">
         <p className="border-l-4 border-blue-600 pl-2 font-semibold">
           Visão Geral
@@ -52,41 +50,6 @@ const Content = () => {
             <p className={textNumber}>{sum.toFixed(2)}</p>
           </div>
         </div>
-      </div>
-      <div>
-        <p className="border-l-4 border-blue-600 pl-2 mb-8 font-semibold">
-          Clientes Cadastrados
-        </p>
-
-        <table className="min-w-full border-separate border-spacing-y-2 sleading-normal">
-          <tbody>
-            {post.map((i, index) => (
-              <tr key={index}>
-                <td className={tableContent}>
-                  <div className="w-12 h-12">
-                    <img
-                      className="w-full h-full rounded-full"
-                      src={i.profile_image}
-                      alt=""
-                    />
-                  </div>
-                </td>
-                <td className={tableContent}>
-                  <p className={tableText}>{i.name}</p>
-                </td>
-                <td className={tableContent}>
-                  <p className={tableText}>{i.email}</p>
-                </td>
-                <td className={tableContent}>
-                  <p className={tableText}>{i.phone}</p>
-                </td>
-                <td className={tableContent}>
-                  <p className={tableText}>{i.status}</p>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </div>
   )
