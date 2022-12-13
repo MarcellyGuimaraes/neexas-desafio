@@ -1,13 +1,21 @@
 import Content from './components/Content'
-import Header from './components/Header'
-import Navbar from './components/Navbar'
-import React, { useEffect, useState } from 'react'
 import Logo from './components/Logo'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import {
+  NotificationIcon,
+  SearchIcon,
+  ToggleIcon,
+  ConfigIcon,
+  PainelIcon,
+  SupportIcon,
+} from './components/Icons'
+import avatar from './assets/img/avatar-admin.png'
 
 function App() {
   const [post, setPost] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [isOpen, setIsopen] = useState(false)
   const [filteredList, setFilteredList] = useState([])
 
   // Pegando dados do data.json
@@ -30,95 +38,197 @@ function App() {
     setFilteredList(searchList)
   }
 
-  // Classes Tailwind
-  const tableContent = 'px-5 py-5 border-b border-gray-200 bg-white text-sm'
-  const tableText = 'text-gray-900 whitespace-no-wrap'
+  const ToggleSidebar = () => {
+    setIsopen(!isOpen)
+  }
 
   return (
-    <div className="h-screen w-screen grid grid-cols-12 auto-rows-max">
-      {/* Grid Logo */}
-      <Logo />
-
-      {/* Grid Navbar */}
-      <div className="border-l-2 col-span-10 row-span-1 p-6 flex justify-between">
-        <input
-          type="text"
-          id="simple-search"
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full block w-2/3 pl-10 p-2.5"
-          placeholder="Search"
-          value={searchQuery}
-          onChange={handleSearch}
+    <div className="flex h-screen bg-gray-200 font-roboto">
+      {/* Sidebar */}
+      <div className="flex">
+        <div
+          className={
+            (isOpen == true ? 'block ' : 'hidden ') +
+            'fixed inset-0 z-20 transition-opacity bg-white opacity-50 lg:hidden'
+          }
         />
-
-        <Header />
-      </div>
-      {/* Grid Sidebar */}
-      <Navbar />
-
-      {/* Grid Conteúdo */}
-      <div className="h-fit bg-slate-200 border-t-2 border-l-2 col-span-10 row-span-5  py-7 px-3">
-        <Content />
-        <div>
-          <p className="border-l-4 border-blue-600 pl-2 mb-8 font-semibold">
-            Clientes Cadastrados
-          </p>
-
-          <table className="min-w-full border-separate border-spacing-y-2 sleading-normal">
-            <tbody>
-              {filteredList === []
-                ? post.map((i, index) => (
-                    <tr key={index}>
-                      <td className={tableContent}>
-                        <div className="w-12 h-12">
-                          <img
-                            className="w-full h-full rounded-full"
-                            src={i.profile_image}
-                            alt=""
-                          />
-                        </div>
-                      </td>
-                      <td className={tableContent}>
-                        <p className={tableText}>{i.name}</p>
-                      </td>
-                      <td className={tableContent}>
-                        <p className={tableText}>{i.email}</p>
-                      </td>
-                      <td className={tableContent}>
-                        <p className={tableText}>{i.phone}</p>
-                      </td>
-                      <td className={tableContent}>
-                        <p className={tableText}>{i.status}</p>
-                      </td>
-                    </tr>
-                  ))
-                : filteredList.map((i, index) => (
-                    <tr key={index}>
-                      <td className={tableContent}>
-                        <div className="w-12 h-12">
-                          <img
-                            className="w-full h-full rounded-full"
-                            src={i.profile_image}
-                            alt=""
-                          />
-                        </div>
-                      </td>
-                      <td className={tableContent}>
-                        <p className={tableText}>{i.name}</p>
-                      </td>
-                      <td className={tableContent}>
-                        <p className={tableText}>{i.email}</p>
-                      </td>
-                      <td className={tableContent}>
-                        <p className={tableText}>{i.phone}</p>
-                      </td>
-                      <td className={tableContent}>
-                        <p className={tableText}>{i.status}</p>
-                      </td>
-                    </tr>
-                  ))}
-            </tbody>
-          </table>
+        <div
+          className={
+            (isOpen == true
+              ? 'translate-x-0 ease-out'
+              : '-translate-x-full ease-in ') +
+            'fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0'
+          }
+        >
+          <div className="flex items-center justify-center mt-8">
+            <div className="flex items-center">
+              <span className="mx-2 text-2xl font-semibold text-white">
+                <Logo />
+              </span>
+            </div>
+          </div>
+          <nav className="mt-10">
+            <a
+              href="/dashboard"
+              className="router-link-active router-link-exact-active flex items-center px-6 py-2 mt-4 duration-200 border-l-4 bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
+              aria-current="page"
+            >
+              <PainelIcon />
+              <span className="mx-4">Painel</span>
+            </a>
+            <a
+              href="/ui-elements"
+              className="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
+            >
+              <ConfigIcon />
+              <span className="mx-4">Configurações</span>
+            </a>
+            <a
+              href="/tables"
+              className="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
+            >
+              <SupportIcon />
+              <span className="mx-4">Suporte</span>
+            </a>
+            <button
+              className="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
+              onClick={ToggleSidebar}
+            >
+              <ToggleIcon />
+              <span className="mx-4">Fechar Menu</span>
+            </button>
+          </nav>
         </div>
+      </div>
+
+      {/* Navbar */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <header className="flex items-center justify-between px-6 py-4 bg-white border-b-4">
+          <div className="flex items-center">
+            <button
+              className="text-gray-500 focus:outline-none lg:hidden"
+              onClick={ToggleSidebar}
+            >
+              <ToggleIcon />
+            </button>
+            <div className="relative mx-4 lg:mx-0">
+              <span className="absolute inset-y-0 left-0 flex items-center pl-3">
+                <SearchIcon />
+              </span>
+              <input
+                className="w-32 pl-10 pr-4 text-indigo-600 border-gray-200 rounded-md sm:w-64 focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
+                type="text"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={handleSearch}
+              />
+            </div>
+          </div>
+          <div className="flex items-center">
+            <button className="flex mx-4 text-gray-600 focus:outline-none">
+              <NotificationIcon />
+            </button>
+            <div className="relative">
+              <button className="relative z-10 block w-8 h-8 overflow-hidden rounded-full shadow focus:outline-none">
+                <img
+                  className="object-cover w-full h-full"
+                  src={avatar}
+                  alt="Your avatar"
+                />
+              </button>
+            </div>
+          </div>
+        </header>
+
+        {/* Conteúdo */}
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+          <div className="flex-1 flex flex-col overflow-hidden">
+            <div>
+              <Content />
+              <div className="flex flex-col mt-8">
+                <div className="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                  <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+                    <table className="min-w-full">
+                      <tbody className="bg-white">
+                        {filteredList === []
+                          ? post.map((i, index) => (
+                              <tr key={index}>
+                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                  <div className="flex-shrink-0 w-10 h-10">
+                                    <img
+                                      className="w-10 h-10 rounded-full"
+                                      src={i.profile_image}
+                                    />
+                                  </div>
+                                </td>
+
+                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                  <div className="flex items-center">
+                                    <div className="ml-4">
+                                      <div className="text-sm font-medium leading-5 text-gray-900">
+                                        {i.name}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                  <div className="text-sm leading-5 text-gray-900">
+                                    {i.email}
+                                  </div>
+                                  <div className="text-sm leading-5 text-gray-500">
+                                    {i.telefone}
+                                  </div>
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                  <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                                    {i.status}
+                                  </span>
+                                </td>
+                              </tr>
+                            ))
+                          : filteredList.map((i, index) => (
+                              <tr key={index}>
+                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                  <div className="flex-shrink-0 w-10 h-10">
+                                    <img
+                                      className="w-10 h-10 rounded-full"
+                                      src={i.profile_image}
+                                    />
+                                  </div>
+                                </td>
+
+                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                  <div className="flex items-center">
+                                    <div className="ml-4">
+                                      <div className="text-sm font-medium leading-5 text-gray-900">
+                                        {i.name}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                  <div className="text-sm leading-5 text-gray-900">
+                                    {i.email}
+                                  </div>
+                                  <div className="text-sm leading-5 text-gray-500">
+                                    {i.telefone}
+                                  </div>
+                                </td>
+                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                  <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                                    {i.status}
+                                  </span>
+                                </td>
+                              </tr>
+                            ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   )
