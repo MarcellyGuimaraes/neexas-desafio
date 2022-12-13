@@ -7,7 +7,7 @@
         "status": "adimplente",
         "subscription_amount": 250.99,
         "profile_url": null,
-        "profile_image": "../src/assets/img/users/MarcioBraga.png"
+        "profile_image": "./users/MarcioBraga.png"
       },
       {
         "name": "Felipe Cardoso",
@@ -16,7 +16,7 @@
         "status": "adimplente",
         "subscription_amount": 250.99,
         "profile_url": null,
-        "profile_image": "../src/assets/img/users/FelipeCardoso.png"
+        "profile_image": "./users/FelipeCardoso.png"
       },
       {
         "name": "Maria Silva",
@@ -25,7 +25,7 @@
         "status": "inadimplente",
         "subscription_amount": 750.99,
         "profile_url": null,
-        "profile_image": "../src/assets/img/users/MariaSilva.png"
+        "profile_image": "./users/MariaSilva.png"
       },
       {
         "name": "Eduardo Lopes",
@@ -34,7 +34,7 @@
         "status": "inadimplente",
         "subscription_amount": 250.99,
         "profile_url": null,
-        "profile_image": "../src/assets/img/users/EduardoLopes.png"
+        "profile_image": "./users/EduardoLopes.png"
       },
       {
         "name": "Nathalia Amaral",
@@ -43,7 +43,7 @@
         "status": "adimplente",
         "subscription_amount": 150.99,
         "profile_url": null,
-        "profile_image": "../src/assets/img/users/NathaliaAmaral.png"
+        "profile_image": "./users/NathaliaAmaral.png"
       },
       {
         "name": "Maria Fernanda",
@@ -52,7 +52,7 @@
         "status": "inadimplente",
         "subscription_amount": 250.99,
         "profile_url": null,
-        "profile_image": "../src/assets/img/users/MariaFernanda.png"
+        "profile_image": "./users/MariaFernanda.png"
       },
       {
         "name": "Roberto Duarte",
@@ -61,7 +61,7 @@
         "status": "inadimplente",
         "subscription_amount": 950.99,
         "profile_url": null,
-        "profile_image": "../src/assets/img/users/RobertoDuarte.png"
+        "profile_image": "./users/RobertoDuarte.png"
       }
     ]
   }
