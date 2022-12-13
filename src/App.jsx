@@ -116,7 +116,7 @@ function App() {
                 <SearchIcon />
               </span>
               <input
-                className="w-32 pl-10 pr-4 text-indigo-600 border-gray-200 rounded-md sm:w-64 focus:border-indigo-600 focus:ring focus:ring-opacity-40 focus:ring-indigo-500"
+                className="w-32 pl-12 pr-4 border-gray-200 rounded-md sm:w-64"
                 type="text"
                 placeholder="Search"
                 value={searchQuery}
@@ -180,7 +180,14 @@ function App() {
                                   </div>
                                 </td>
                                 <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                                  <span
+                                    className={
+                                      'inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full ' +
+                                      (i.status === 'adimplente'
+                                        ? 'text-green-800 bg-green-100'
+                                        : 'text-red-800 bg-red-100')
+                                    }
+                                  >
                                     {i.status}
                                   </span>
                                 </td>
@@ -215,7 +222,14 @@ function App() {
                                   </div>
                                 </td>
                                 <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full">
+                                  <span
+                                    className={
+                                      'inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full ' +
+                                      (i.status === 'adimplente'
+                                        ? 'text-green-800 bg-green-100'
+                                        : 'text-red-800 bg-red-100')
+                                    }
+                                  >
                                     {i.status}
                                   </span>
                                 </td>
