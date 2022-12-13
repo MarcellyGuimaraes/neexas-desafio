@@ -8,6 +8,7 @@ import axios from 'axios'
 function App() {
   const [post, setPost] = useState(null)
   const [searchQuery, setSearchQuery] = useState('')
+  const [filteredList, setFilteredList] = useState([])
 
   // Pegando dados do data.json
   useEffect(() => {
@@ -26,7 +27,7 @@ function App() {
       return item.name.toLowerCase().indexOf(query.toLowerCase()) !== -1
     })
 
-    setPost(searchList)
+    setFilteredList(searchList)
   }
 
   // Classes Tailwind
@@ -64,31 +65,57 @@ function App() {
 
           <table className="min-w-full border-separate border-spacing-y-2 sleading-normal">
             <tbody>
-              {post.map((i, index) => (
-                <tr key={index}>
-                  <td className={tableContent}>
-                    <div className="w-12 h-12">
-                      <img
-                        className="w-full h-full rounded-full"
-                        src={i.profile_image}
-                        alt=""
-                      />
-                    </div>
-                  </td>
-                  <td className={tableContent}>
-                    <p className={tableText}>{i.name}</p>
-                  </td>
-                  <td className={tableContent}>
-                    <p className={tableText}>{i.email}</p>
-                  </td>
-                  <td className={tableContent}>
-                    <p className={tableText}>{i.phone}</p>
-                  </td>
-                  <td className={tableContent}>
-                    <p className={tableText}>{i.status}</p>
-                  </td>
-                </tr>
-              ))}
+              {filteredList === []
+                ? post.map((i, index) => (
+                    <tr key={index}>
+                      <td className={tableContent}>
+                        <div className="w-12 h-12">
+                          <img
+                            className="w-full h-full rounded-full"
+                            src={i.profile_image}
+                            alt=""
+                          />
+                        </div>
+                      </td>
+                      <td className={tableContent}>
+                        <p className={tableText}>{i.name}</p>
+                      </td>
+                      <td className={tableContent}>
+                        <p className={tableText}>{i.email}</p>
+                      </td>
+                      <td className={tableContent}>
+                        <p className={tableText}>{i.phone}</p>
+                      </td>
+                      <td className={tableContent}>
+                        <p className={tableText}>{i.status}</p>
+                      </td>
+                    </tr>
+                  ))
+                : filteredList.map((i, index) => (
+                    <tr key={index}>
+                      <td className={tableContent}>
+                        <div className="w-12 h-12">
+                          <img
+                            className="w-full h-full rounded-full"
+                            src={i.profile_image}
+                            alt=""
+                          />
+                        </div>
+                      </td>
+                      <td className={tableContent}>
+                        <p className={tableText}>{i.name}</p>
+                      </td>
+                      <td className={tableContent}>
+                        <p className={tableText}>{i.email}</p>
+                      </td>
+                      <td className={tableContent}>
+                        <p className={tableText}>{i.phone}</p>
+                      </td>
+                      <td className={tableContent}>
+                        <p className={tableText}>{i.status}</p>
+                      </td>
+                    </tr>
+                  ))}
             </tbody>
           </table>
         </div>
