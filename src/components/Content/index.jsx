@@ -19,7 +19,6 @@ const Content = () => {
   }
 
   // CONSTANTES DE CLASSES
-  const cardText = 'h-fit w-2/12 bg-white p-5 m-3'
   const textNumber = 'font-bold text-blue-600 text-xl'
 
   return (

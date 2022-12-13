@@ -17,6 +17,9 @@ function App() {
   const [searchQuery, setSearchQuery] = useState('')
   const [isOpen, setIsopen] = useState(false)
   const [filteredList, setFilteredList] = useState([])
+  const navText =
+    'flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-blue-600 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100'
+  const flexItemCenter = 'flex items-center'
 
   // Pegando dados do data.json
   useEffect(() => {
@@ -49,62 +52,46 @@ function App() {
         <div
           className={
             (isOpen == true ? 'block ' : 'hidden ') +
-            'fixed inset-0 z-20 transition-opacity bg-white opacity-50 lg:hidden'
+            'fixed inset-0 z-20 transition-opacity bg-black opacity-30 lg:hidden'
           }
+          onClick={ToggleSidebar}
         />
         <div
           className={
             (isOpen == true
               ? 'translate-x-0 ease-out'
               : '-translate-x-full ease-in ') +
-            'fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-gray-900 lg:translate-x-0 lg:static lg:inset-0'
+            'fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-white lg:translate-x-0 lg:static lg:inset-0'
           }
         >
           <div className="flex items-center justify-center mt-8">
-            <div className="flex items-center">
+            <div className={flexItemCenter}>
               <span className="mx-2 text-2xl font-semibold text-white">
                 <Logo />
               </span>
             </div>
           </div>
           <nav className="mt-10">
-            <a
-              href="/dashboard"
-              className="router-link-active router-link-exact-active flex items-center px-6 py-2 mt-4 duration-200 border-l-4 bg-gray-600 bg-opacity-25 text-gray-100 border-gray-100"
-              aria-current="page"
-            >
+            <p className={navText}>
               <PainelIcon />
               <span className="mx-4">Painel</span>
-            </a>
-            <a
-              href="/ui-elements"
-              className="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-            >
+            </p>
+            <p className={navText}>
               <ConfigIcon />
               <span className="mx-4">Configurações</span>
-            </a>
-            <a
-              href="/tables"
-              className="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-            >
+            </p>
+            <p className={navText}>
               <SupportIcon />
               <span className="mx-4">Suporte</span>
-            </a>
-            <button
-              className="flex items-center px-6 py-2 mt-4 duration-200 border-l-4 border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:text-gray-100"
-              onClick={ToggleSidebar}
-            >
-              <ToggleIcon />
-              <span className="mx-4">Fechar Menu</span>
-            </button>
+            </p>
           </nav>
         </div>
       </div>
 
-      {/* Navbar */}
       <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Navbar */}
         <header className="flex items-center justify-between px-6 py-4 bg-white border-b-4">
-          <div className="flex items-center">
+          <div className={flexItemCenter}>
             <button
               className="text-gray-500 focus:outline-none lg:hidden"
               onClick={ToggleSidebar}
@@ -124,7 +111,7 @@ function App() {
               />
             </div>
           </div>
-          <div className="flex items-center">
+          <div className={flexItemCenter}>
             <button className="flex mx-4 text-gray-600 focus:outline-none">
               <NotificationIcon />
             </button>
@@ -143,101 +130,100 @@ function App() {
         {/* Conteúdo */}
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
           <div className="flex-1 flex flex-col overflow-hidden">
-            <div>
-              <Content />
-              <div className="flex flex-col mt-8">
-                <div className="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
-                  <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
-                    <table className="min-w-full">
-                      <tbody className="bg-white">
-                        {filteredList === []
-                          ? post.map((i, index) => (
-                              <tr key={index}>
-                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <div className="flex-shrink-0 w-10 h-10">
-                                    <img
-                                      className="w-10 h-10 rounded-full"
-                                      src={i.profile_image}
-                                    />
-                                  </div>
-                                </td>
+            <Content />
 
-                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <div className="flex items-center">
-                                    <div className="ml-4">
-                                      <div className="text-sm font-medium leading-5 text-gray-900">
-                                        {i.name}
-                                      </div>
+            <div className="flex flex-col mt-8">
+              <div className="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+                <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
+                  <table className="min-w-full">
+                    <tbody className="bg-white">
+                      {filteredList === []
+                        ? post.map((i, index) => (
+                            <tr key={index}>
+                              <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                <div className="flex-shrink-0 w-10 h-10">
+                                  <img
+                                    className="w-10 h-10 rounded-full"
+                                    src={i.profile_image}
+                                  />
+                                </div>
+                              </td>
+
+                              <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                <div className={flexItemCenter}>
+                                  <div className="ml-4">
+                                    <div className="text-sm font-medium leading-5 text-gray-900">
+                                      {i.name}
                                     </div>
                                   </div>
-                                </td>
-                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <div className="text-sm leading-5 text-gray-900">
-                                    {i.email}
-                                  </div>
-                                  <div className="text-sm leading-5 text-gray-500">
-                                    {i.telefone}
-                                  </div>
-                                </td>
-                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <span
-                                    className={
-                                      'inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full ' +
-                                      (i.status === 'adimplente'
-                                        ? 'text-green-800 bg-green-100'
-                                        : 'text-red-800 bg-red-100')
-                                    }
-                                  >
-                                    {i.status}
-                                  </span>
-                                </td>
-                              </tr>
-                            ))
-                          : filteredList.map((i, index) => (
-                              <tr key={index}>
-                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <div className="flex-shrink-0 w-10 h-10">
-                                    <img
-                                      className="w-10 h-10 rounded-full"
-                                      src={i.profile_image}
-                                    />
-                                  </div>
-                                </td>
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                <div className="text-sm leading-5 text-gray-900">
+                                  {i.email}
+                                </div>
+                                <div className="text-sm leading-5 text-gray-500">
+                                  {i.telefone}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                <span
+                                  className={
+                                    'inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full ' +
+                                    (i.status === 'adimplente'
+                                      ? 'text-green-800 bg-green-100'
+                                      : 'text-red-800 bg-red-100')
+                                  }
+                                >
+                                  {i.status}
+                                </span>
+                              </td>
+                            </tr>
+                          ))
+                        : filteredList.map((i, index) => (
+                            <tr key={index}>
+                              <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                <div className="flex-shrink-0 w-10 h-10">
+                                  <img
+                                    className="w-10 h-10 rounded-full"
+                                    src={i.profile_image}
+                                  />
+                                </div>
+                              </td>
 
-                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <div className="flex items-center">
-                                    <div className="ml-4">
-                                      <div className="text-sm font-medium leading-5 text-gray-900">
-                                        {i.name}
-                                      </div>
+                              <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                <div className={flexItemCenter}>
+                                  <div className="ml-4">
+                                    <div className="text-sm font-medium leading-5 text-gray-900">
+                                      {i.name}
                                     </div>
                                   </div>
-                                </td>
-                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <div className="text-sm leading-5 text-gray-900">
-                                    {i.email}
-                                  </div>
-                                  <div className="text-sm leading-5 text-gray-500">
-                                    {i.telefone}
-                                  </div>
-                                </td>
-                                <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
-                                  <span
-                                    className={
-                                      'inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full ' +
-                                      (i.status === 'adimplente'
-                                        ? 'text-green-800 bg-green-100'
-                                        : 'text-red-800 bg-red-100')
-                                    }
-                                  >
-                                    {i.status}
-                                  </span>
-                                </td>
-                              </tr>
-                            ))}
-                      </tbody>
-                    </table>
-                  </div>
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                <div className="text-sm leading-5 text-gray-900">
+                                  {i.email}
+                                </div>
+                                <div className="text-sm leading-5 text-gray-500">
+                                  {i.telefone}
+                                </div>
+                              </td>
+                              <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
+                                <span
+                                  className={
+                                    'inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full ' +
+                                    (i.status === 'adimplente'
+                                      ? 'text-green-800 bg-green-100'
+                                      : 'text-red-800 bg-red-100')
+                                  }
+                                >
+                                  {i.status}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
