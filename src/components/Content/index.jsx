@@ -26,11 +26,11 @@ const Content = () => {
   }
 
   // CONSTANTES DE CLASSES
-  const cardText = 'w-fit h-fit w-2/12 bg-white p-5 m-3'
+  const cardText = 'h-fit w-2/12 bg-white p-5 m-3'
   const textNumber = 'font-bold text-blue-600 text-xl'
 
   return (
-    <div className="h-fit bg-slate-200 border-t-2 border-l-2 col-span-10 row-span-5  pt-7 pl-3">
+    <div className="h-fit bg-slate-200 border-t-2 border-l-2 col-span-10 row-span-5  py-7 px-3">
       <div className="mb-10">
         <p className="border-l-4 border-blue-600 pl-2 font-semibold">
           Visão Geral
@@ -54,24 +54,40 @@ const Content = () => {
           </div>
         </div>
       </div>
-      <div className="m-3">
-        <p className="border-l-4 border-blue-600 pl-2 font-semibold">
+      <div>
+        <p className="border-l-4 border-blue-600 pl-2 mb-8 font-semibold">
           Clientes Cadastrados
         </p>
-        <ul>
-          {post.map((item) => (
-            <li
-              className="bg-white p-5 m-2 flex justify-around"
-              key={item.name}
-            >
-              <img class="rounded-full" src={item.profile_image} alt="" />
-              <span>{item.name}</span>
-              <span>{item.email}</span>
-              <span>{item.phone}</span>
-              <span>{item.status}</span>
-            </li>
-          ))}
-        </ul>
+
+        <table className="min-w-full border-separate border-spacing-y-2 sleading-normal">
+          <tbody>
+            {post.map((i) => (
+              <tr>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <div className="w-12 h-12">
+                    <img
+                      className="w-full h-full rounded-full"
+                      src={i.profile_image}
+                      alt=""
+                    />
+                  </div>
+                </td>
+                <td className="px-1 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p className="text-gray-900 whitespace-no-wrap">{i.name}</p>
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p className="text-gray-900 whitespace-no-wrap">{i.email}</p>
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p className="text-gray-900 whitespace-no-wrap">{i.phone}</p>
+                </td>
+                <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                  <p className="text-gray-900 whitespace-no-wrap">{i.status}</p>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   )

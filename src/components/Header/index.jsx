@@ -1,6 +1,7 @@
 import React from 'react'
 import notification from '../../assets/img/Notification.png'
 import avatar from '../../assets/img/avatar-admin.png'
+import { NotificationIcon } from '../Icons'
 
 const Header = () => {
   return (
@@ -14,8 +15,8 @@ const Header = () => {
       />
 
       <div className="flex items-center">
-        <img className="w-6 h-9 mx-8" src={notification} />
-        <img src={avatar} />
+        <NotificationIcon />
+        <img className="mx-8" src={avatar} />
       </div>
     </div>
   )
