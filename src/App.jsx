@@ -137,8 +137,10 @@ function App() {
                 <div className="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
                   <table className="min-w-full">
                     <tbody className="bg-white">
-                      {!filteredList
-                        ? post.map((i, index) => (
+                      {console.log(post)}
+                      {console.log(filteredList)}
+                      {searchQuery
+                        ? filteredList.map((i, index) => (
                             <tr key={index}>
                               <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                                 <div className="flex-shrink-0 w-10 h-10">
@@ -180,7 +182,7 @@ function App() {
                               </td>
                             </tr>
                           ))
-                        : filteredList.map((i, index) => (
+                        : post.map((i, index) => (
                             <tr key={index}>
                               <td className="px-6 py-4 border-b border-gray-200 whitespace-nowrap">
                                 <div className="flex-shrink-0 w-10 h-10">
