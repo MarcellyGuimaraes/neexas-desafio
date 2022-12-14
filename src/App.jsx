@@ -11,6 +11,7 @@ import {
   SupportIcon,
 } from './components/Icons'
 import avatar from './assets/img/avatar-admin.png'
+import Sidebar from './components/Sidebar'
 
 function App() {
   const [post, setPost] = useState(null)
@@ -48,56 +49,12 @@ function App() {
   return (
     <div className="flex h-screen bg-gray-200 font-roboto">
       {/* Sidebar */}
-      <div className="flex">
-        <div
-          className={
-            (isOpen == true ? 'block ' : 'hidden ') +
-            'fixed inset-0 z-20 transition-opacity bg-black opacity-30 lg:hidden'
-          }
-          onClick={ToggleSidebar}
-        />
-        <div
-          className={
-            (isOpen == true
-              ? 'translate-x-0 ease-out'
-              : '-translate-x-full ease-in ') +
-            'fixed inset-y-0 left-0 z-30 w-64 overflow-y-auto transition duration-300 transform bg-white lg:translate-x-0 lg:static lg:inset-0'
-          }
-        >
-          <div className="flex items-center justify-center mt-8">
-            <div className={flexItemCenter}>
-              <span className="mx-2 text-2xl font-semibold text-white">
-                <Logo />
-              </span>
-            </div>
-          </div>
-          <nav className="mt-10">
-            <p className={navText}>
-              <PainelIcon />
-              <span className="mx-4">Painel</span>
-            </p>
-            <p className={navText}>
-              <ConfigIcon />
-              <span className="mx-4">Configurações</span>
-            </p>
-            <p className={navText}>
-              <SupportIcon />
-              <span className="mx-4">Suporte</span>
-            </p>
-          </nav>
-        </div>
-      </div>
+      <Sidebar />
 
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Navbar */}
         <header className="flex items-center justify-between px-6 py-4 bg-white border-b-4">
           <div className={flexItemCenter}>
-            <button
-              className="text-gray-500 focus:outline-none lg:hidden"
-              onClick={ToggleSidebar}
-            >
-              <ToggleIcon />
-            </button>
             <div className="relative mx-4 lg:mx-0">
               <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                 <SearchIcon />
